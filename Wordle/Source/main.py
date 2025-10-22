@@ -7,6 +7,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Purrdle")
+    clock = pygame.time.Clock()
     
     game = Game()
 
@@ -15,12 +16,14 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            
-            game.handle_event(event)
+            elif event.type == pygame.USEREVENT:
+                game.handle_animation_complete()
+            else:
+                game.handle_event(event)
         
-        game.draw(screen)
-
+        game.render(screen)
         pygame.display.update()
+        clock.tick(30)  
 
 if __name__ == "__main__":
     main()
