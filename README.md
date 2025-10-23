@@ -4,8 +4,10 @@
 
 **Purrdle** is a cat-themed version of the popular word-guessing game **Wordle**, built in **Python** using the **Pygame** library.  
 
-This project was created as part of **[Computational Thinking/CSC00014]**.  
+This project was created as part of **[Computational Thinking/CSC0014]**.  
 It features a complete, playable game loop, a themed graphical interface, animations, and sound effects.
+
+Video demo: [Youtube](https://youtu.be/jbzPXo6zy-g)
 
 ---
 ## Requirements
