@@ -18,17 +18,7 @@ It features a complete, playable game loop, a themed graphical interface, animat
 
 ## Installation & Setup
 
-### Step 1: Download Required Assets
-
-All necessary assets (images and the wordlist) are hosted on **Google Drive**.  
-Please download the **assets folder** from this link:
-
-[!!! PASTE YOUR GOOGLE DRIVE SHARE LINK HERE !!!]
-
-
----
-
-### Step 2: Download the source code
+### Step 1: Download the source code
 
 Clone or download the source code from this repository:
 
@@ -39,7 +29,7 @@ cd Purrdle
 
 ---
 
-### Step 3: Place the `assets/` Folder
+### Step 2: Place the `assets/` Folder
 
 Place the downloaded **assets folder** into the root of the project directory.  
 The game **will not run** unless the folder structure is correct.
@@ -53,20 +43,21 @@ Source/
 │   ├── cat_sad.png
 │   ├── words_of_5.txt 
 │   ├── paw_print.png
-│   ├── paw_small.png
-│   └── yarn_ball.png
+│   ├── cat1.png
+│   └── cat2.png
 │
 ├── main.py
 ├── game.py
 ├── assets.py
 ├── settings.py
+├── ...
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-### Step 4: Install Dependencies
+### Step 3: Install Dependencies
 
 It’s recommended to use a **Python virtual environment**.
 
@@ -86,7 +77,7 @@ pip install -r requirements.txt
 
 ---
 
-### Step 5: Run the Game
+### Step 4: Run the Game
 
 Once assets and dependencies are in place:
 
