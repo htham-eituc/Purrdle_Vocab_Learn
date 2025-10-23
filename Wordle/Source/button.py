@@ -20,8 +20,8 @@ class Button:
     
     def render(self, screen):
         color = BUTTON_HOVER if self.hovered else BUTTON_BG
-        pygame.draw.rect(screen, color, self.rect, border_radius=12)
-        pygame.draw.rect(screen, BUTTON_TEXT, self.rect, 3, border_radius=12)
+        pygame.draw.rect(screen, color, self.rect, border_radius=10)
+        pygame.draw.rect(screen, BUTTON_TEXT, self.rect, 3, border_radius=10)
         
         text_surface = self.font.render(self.text, True, BUTTON_TEXT)
         text_rect = text_surface.get_rect(center=self.rect.center)

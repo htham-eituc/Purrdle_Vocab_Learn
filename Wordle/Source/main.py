@@ -21,9 +21,10 @@ def main():
             else:
                 game.handle_event(event)
         
+        game.update()
         game.render(screen)
         pygame.display.update()
-        clock.tick(30)  
+        clock.tick(60)  
 
 if __name__ == "__main__":
     main()

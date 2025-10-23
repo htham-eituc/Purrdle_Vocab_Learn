@@ -27,7 +27,7 @@ GRID_COLS = 5
 SQUARE_SIZE = 62  
 SQUARE_PADDING = 8
 GRID_START_X = (SCREEN_WIDTH - (GRID_COLS * SQUARE_SIZE + (GRID_COLS - 1) * SQUARE_PADDING)) // 2
-GRID_START_Y = 180
+GRID_START_Y = 130
 
 # Font & Color Mapping
 FILLED_TEXT_COLOR = WHITE
@@ -41,15 +41,27 @@ COLOR_MAP = {
 
 # Animation settings
 FLIP_DURATION = 400  # ms per tile
-FLIP_DELAY = 150     # ms between tiles
-POP_DURATION = 50    # ms
+FLIP_DELAY =  60     # ms between tiles
+POP_DURATION = 150    # ms
 SHAKE_DURATION = 400 # ms
-SHAKE_INTENSITY = 8  # pixels
+SHAKE_INTENSITY = 10  # pixels
 
 # Button settings
-BUTTON_WIDTH = 160
-BUTTON_HEIGHT = 50
-BUTTON_Y = SCREEN_HEIGHT - 100
+BUTTON_WIDTH = 150
+BUTTON_HEIGHT = 42
+BUTTON_Y = SCREEN_HEIGHT - 55
+
+# Keyboard settings
+KEYBOARD_WIDTH = 500
+KEYBOARD_HEIGHT = 200
+KEYBOARD_X = (SCREEN_WIDTH - KEYBOARD_WIDTH) // 2
+KEYBOARD_Y = 620
+
+# Keyboard colors
+KEY_BG = (235, 230, 235)
+KEY_HOVER = (215, 210, 215)
+KEY_BORDER = (200, 195, 200)
+KEYBOARD_BG = WHITE
 
 IMAGE_PATHS = {
     "logo": "assets/cat_logo.png",
@@ -58,9 +70,8 @@ IMAGE_PATHS = {
     "cat_lose": "assets/cat_sad.png",
     
     "paw_print": "assets/paw_print.png",
-    "yarn_ball": "assets/yarn_ball.png",
-
-    "paw_small": "assets/paw_small.png",
+    "cat1": "assets/cat1.png",
+    "cat2": "assets/cat2.png",
 }
 
 # Cat theme settings
@@ -85,7 +96,7 @@ def get_letter_font():
     return pygame.font.Font(None, 52)  
 
 def get_message_font(): 
-    return pygame.font.Font("assets/fonts/Comfortaa-Regular.ttf", 34)
+    return pygame.font.Font("assets/fonts/Comfortaa-Regular.ttf", 24)
 
 def get_title_font():
     return pygame.font.Font("assets/fonts/LuckiestGuy-Regular.ttf", 64)  
@@ -94,4 +105,7 @@ def get_subtitle_font():
     return pygame.font.Font("assets/fonts/Comfortaa-Regular.ttf", 28)
 
 def get_button_font():
-    return pygame.font.Font("assets/fonts/Comfortaa-Regular.ttf", 30)
+    return pygame.font.Font("assets/fonts/Comfortaa-Regular.ttf", 26)
+
+def get_key_font():
+    return pygame.font.Font(None, 32)

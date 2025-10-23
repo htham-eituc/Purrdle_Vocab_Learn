@@ -98,7 +98,10 @@ class AnimationManager:
         return 0
     
     def is_animating(self):
-        return len(self.animations) > 0
+        return any(
+            not isinstance(anim, PopAnimation)
+            for anim in self.animations
+        )
     
     def clear(self):
         self.animations.clear()

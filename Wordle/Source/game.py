@@ -5,6 +5,7 @@ from settings import *
 from animations import AnimationManager, FlipAnimation, PopAnimation, ShakeAnimation
 from button import Button
 from assets import AssetManager
+from keys import Keyboard
 
 class Game:
     def __init__(self):
@@ -28,6 +29,7 @@ class Game:
         
         self.animation_manager = AnimationManager()
         self.assets = AssetManager()
+        self.keyboard = Keyboard(KEYBOARD_X, KEYBOARD_Y)
         
         self.restart_button = Button(
             SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2,
@@ -38,10 +40,17 @@ class Game:
             self.reset
         )
         self.can_input = True
+        self.title_surface = self.fonts["title"].render(CAT_THEME["title"], True, BLACK)
+        self.subtitle_surface = self.fonts["subtitle"].render(CAT_THEME["subtitle"], True, BLACK)
+        self.title_rect = self.title_surface.get_rect(center=(SCREEN_WIDTH // 2, 60))
+        self.subtitle_rect = self.subtitle_surface.get_rect(center=(SCREEN_WIDTH // 2, 105))
+        self.decor_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+
+        self.render_decorations(self.decor_surface)
 
     def load_words(self):
         try:
-            with open("words_of_5_old.txt", "r") as f:
+            with open("assets/words_of_5_old.txt", "r") as f:
                 words = [line.strip().upper() for line in f.readlines()]
             return words
         except FileNotFoundError:
@@ -51,12 +60,34 @@ class Game:
     def reset(self):
         self.__init__() 
 
+    def update(self):
+        self.animation_manager.update()
+
     def handle_event(self, event):
         # Button events (mouse)
         if self.restart_button.handle_event(event):
             return
         
-        # Keyboard events
+        # Keyboard click events
+        keyboard_action = self.keyboard.handle_event(event)
+        if keyboard_action:
+            if not self.can_input or self.animation_manager.is_animating():
+                return
+            
+            if keyboard_action == "BACK":
+                if len(self.current_guess) > 0:
+                    self.current_guess.pop()
+            elif keyboard_action == "ENTER":
+                if len(self.current_guess) == GRID_COLS:
+                    self.submit_guess()
+            else:  # Letter key
+                if len(self.current_guess) < GRID_COLS:
+                    self.current_guess.append(keyboard_action)
+                    col = len(self.current_guess) - 1
+                    self.animation_manager.add(PopAnimation(self.current_row, col))
+            return
+        
+        # Physical keyboard events
         if event.type != pygame.KEYDOWN:
             return
 
@@ -85,6 +116,9 @@ class Game:
 
         colors = self.check_guess(guess_str)
         self.guesses.append(list(zip(self.current_guess, colors)))
+        
+        # Update keyboard colors
+        self.keyboard.update_from_guess(self.current_guess, colors)
         
         # Add flip animations for each tile
         for col in range(GRID_COLS):
@@ -185,17 +219,17 @@ class Game:
             screen.blit(text_surface, text_rect)
             
             # Add small paw print decoration on completed tiles
-            # if color_name and self.assets.has("paw_small"):
-            #     paw_x = rect.right - 10
-            #     paw_y = rect.bottom - 10
-            #     self.assets.draw(screen, "paw_small", (paw_x, paw_y), size=(14, 14), center=True)
+            if color_name and self.assets.has("paw_small"):
+                paw_x = rect.right - 10
+                paw_y = rect.bottom - 10
+                self.assets.draw(screen, "paw_small", (paw_x, paw_y), size=(14, 14), center=True)
 
     def render_decorations(self, screen):
-        # Corner decorations - yarn balls
-        # if self.assets.has("yarn_ball"):
-        #     self.assets.draw(screen, "yarn_ball", (30, 30), size=(45, 45))
-        #     self.assets.draw(screen, "yarn_ball", (SCREEN_WIDTH - 75, 30), size=(45, 45))
-        
+        # Corner decorations - cats
+        if self.assets.has("cat1"):
+            self.assets.draw(self.decor_surface, "cat1", (15, 30), size=(80, 80))
+        if self.assets.has("cat2"):
+            self.assets.draw(self.decor_surface, "cat2", (SCREEN_WIDTH - 85, 30), size=(80, 80))
         # Scattered paw prints
             paw_positions = [
                 (40, SCREEN_HEIGHT - 130),
@@ -211,56 +245,50 @@ class Game:
                 (SCREEN_WIDTH // 1.5, SCREEN_HEIGHT - 300),
             ]
             for pos in paw_positions:
-                self.assets.draw(screen, "paw_print", pos, size=(50, 50), center=True)
+                self.assets.draw(self.decor_surface, "paw_print", pos, size=(50, 50), center=True)
 
     def render(self, screen):
         screen.fill(BG_COLOR)
         
-        self.animation_manager.update()
+        # Draw background decorations
+        screen.blit(self.decor_surface, (0, 0))
         
-        self.render_decorations(screen)
+        # --- Draw cached title + subtitle ---
+        screen.blit(self.title_surface, self.title_rect)
+        screen.blit(self.subtitle_surface, self.subtitle_rect)
         
-        # title with logo
-        title_y = 60
-        title_text = CAT_THEME["title"]
-        title_surface = self.fonts["title"].render(title_text, True, BLACK)
-        title_rect = title_surface.get_rect(center=(SCREEN_WIDTH // 2, title_y))
-        screen.blit(title_surface, title_rect)
-        
-        # subtitle
-        subtitle_y = title_y + 45
-        subtitle_text = CAT_THEME["subtitle"]
-        subtitle_surface = self.fonts["subtitle"].render(subtitle_text, True, BLACK)
-        subtitle_rect = subtitle_surface.get_rect(center=(SCREEN_WIDTH // 2, subtitle_y))
-        screen.blit(subtitle_surface, subtitle_rect)
-        
+        # Draw title with logo
         if self.assets.has("logo"):
-            logo_y = title_y - 10
+            logo_y = self.title_rect.centery - 12
             self.assets.draw(screen, "logo", (SCREEN_WIDTH // 2 - 170, logo_y), size=(100, 100), center=True)
             self.assets.draw(screen, "logo", (SCREEN_WIDTH // 2 + 170, logo_y), size=(100, 100), center=True)
         
+        # Draw grid
         for row in range(GRID_ROWS):
             for col in range(GRID_COLS):
                 if row < len(self.guesses):
+                    # Submitted guess
                     letter, color_name = self.guesses[row][col]
                     self.render_tile(screen, row, col, letter, color_name)
                 elif row == self.current_row:
+                    # Current input row
                     if col < len(self.current_guess):
                         letter = self.current_guess[col]
                         self.render_tile(screen, row, col, letter, is_current=True)
                     else:
                         self.render_tile(screen, row, col)
                 else:
+                    # Empty row
                     self.render_tile(screen, row, col)
 
         # Draw game over message and cat
         if self.game_over:
-            message_y = GRID_START_Y + (GRID_ROWS * (SQUARE_SIZE + SQUARE_PADDING)) + 50
+            message_y = GRID_START_Y + (GRID_ROWS * (SQUARE_SIZE + SQUARE_PADDING)) + 10
             
             # Draw cat image based on win/lose
             cat_image_key = "cat_win" if self.won else "cat_lose"
             if self.assets.has(cat_image_key):
-                cat_y = message_y - 70
+                cat_y = message_y - 60
                 self.assets.draw(screen, cat_image_key, (SCREEN_WIDTH // 2, cat_y), size=(100, 100), center=True)
             
             # Draw message
@@ -278,3 +306,6 @@ class Game:
         
         # Draw restart button
         self.restart_button.render(screen)
+        
+        # Draw keyboard
+        self.keyboard.render(screen)
