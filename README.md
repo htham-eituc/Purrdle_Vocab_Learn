@@ -3,7 +3,6 @@
 ## Overview
 
 **Purrdle** is a cat-themed version of the popular word-guessing game **Wordle**, built in **Python** using the **Pygame** library.  
-Instead of using a standard dictionary, this version pulls from a custom list of 5-letter, cat-related words.
 
 This project was created as part of **[Computational Thinking/CSC00014]**.  
 It features a complete, playable game loop, a themed graphical interface, animations, and sound effects.
@@ -31,7 +30,8 @@ cd Purrdle
 
 ### Step 2: Place the `assets/` Folder
 
-Place the downloaded **assets folder** into the root of the project directory.  
+(If you clone by GitHub, skip this part) 
+Place the downloaded **assets folder** into the root of the project directory. 
 The game **will not run** unless the folder structure is correct.
 
 ```
