@@ -1,6 +1,6 @@
 import pygame
 
-SCREEN_WIDTH = 600
+SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 850
 
 WHITE = (255, 255, 255)
@@ -8,6 +8,7 @@ BLACK = (58, 54, 52)  # Soft black
 CREAM = (255, 251, 250)  # Warm cream background
 LIGHT_PINK = (255, 228, 225)  # Soft pink
 PEACH = (255, 218, 193)  # Peachy tone
+LIGHT_GRAY = (240, 240, 240)  # Light gray
 
 # Tile colors
 CAT_GREEN = (168, 218, 181)      # Soft mint green 
@@ -50,6 +51,7 @@ SHAKE_INTENSITY = 10  # pixels
 BUTTON_WIDTH = 150
 BUTTON_HEIGHT = 42
 BUTTON_Y = SCREEN_HEIGHT - 55
+FILTER_SIZE = 16
 
 # Keyboard settings
 KEYBOARD_WIDTH = 500
@@ -104,8 +106,11 @@ def get_title_font():
 def get_subtitle_font():
     return pygame.font.Font("assets/fonts/Comfortaa-Regular.ttf", 28)
 
-def get_button_font():
-    return pygame.font.Font("assets/fonts/Comfortaa-Regular.ttf", 26)
+def get_button_font(size=25):
+    return pygame.font.Font("assets/fonts/Comfortaa-Regular.ttf", size)
 
 def get_key_font():
     return pygame.font.Font(None, 32)
+
+def get_icon_font(size=48):
+    return pygame.font.Font("assets/fonts/segoe-ui-emoji.ttf", size)

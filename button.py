@@ -2,12 +2,12 @@ import pygame
 from settings import BUTTON_BG, BUTTON_HOVER, BUTTON_TEXT, get_button_font
 
 class Button:
-    def __init__(self, x, y, width, height, text, callback):
+    def __init__(self, x, y, width, height, text, callback, size = None):
         self.rect = pygame.Rect(x, y, width, height)
         self.text = text
         self.callback = callback
         self.hovered = False
-        self.font = get_button_font()
+        self.font = get_button_font(size) if size else get_button_font()
     
     def handle_event(self, event):
         if event.type == pygame.MOUSEMOTION:

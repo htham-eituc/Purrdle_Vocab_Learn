@@ -1,0 +1,148 @@
+{
+  "words": [
+    {
+      "word": "laugh",
+      "definition": "An expression of mirth particular to the human species; the sound heard in laughing; laughter.",
+      "status": "few_mistakes",
+      "attempts": 2,
+      "correct": 2,
+      "wrong": 0
+    },
+    {
+      "word": "hate",
+      "definition": "An object of hatred.",
+      "status": "learned",
+      "attempts": 2,
+      "correct": 2,
+      "wrong": 0
+    },
+    {
+      "word": "concentration",
+      "definition": "The act, process or ability of concentrating; the process of becoming concentrated, or the state of being concentrated.",
+      "status": "learned",
+      "attempts": 2,
+      "correct": 2,
+      "wrong": 0
+    },
+    {
+      "word": "party",
+      "definition": "A person or group of people constituting a particular side in a contract or legal action.",
+      "status": "learned",
+      "attempts": 1,
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "word": "vibration",
+      "definition": "The act of vibrating or the condition of being vibrated.",
+      "status": "learned",
+      "attempts": 1,
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "word": "enthusiasm",
+      "definition": "Possession by a god; divine inspiration or frenzy.",
+      "status": "not_learned",
+      "attempts": 1,
+      "correct": 0,
+      "wrong": 1
+    },
+    {
+      "word": "leave over",
+      "definition": "To allow a portion to remain unused or unconsumed.",
+      "status": "learned",
+      "attempts": 1,
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "word": "anaconda",
+      "definition": "Any of various large nonvenomous snakes of the genus Eunectes, found mainly in northern South America. Their length can grow to as much as 5 m (15 ft).",
+      "status": "few_mistakes",
+      "attempts": 1,
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "word": "feline",
+      "definition": "Of or pertaining to cats.",
+      "status": "few_mistakes",
+      "attempts": 2,
+      "correct": 2,
+      "wrong": 0
+    },
+    {
+      "word": "environment",
+      "definition": "The surroundings of, and influences on, a particular item of interest.",
+      "status": "not_learned",
+      "attempts": 1,
+      "correct": 0,
+      "wrong": 1
+    },
+    {
+      "word": "business",
+      "definition": "A specific commercial enterprise or establishment.",
+      "status": "not_learned",
+      "attempts": 0,
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "word": "consciousness",
+      "definition": "The state of being conscious or aware; awareness.",
+      "status": "learned",
+      "attempts": 1,
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "word": "vocabulary",
+      "definition": "A usually alphabetized and explained collection of words e.g. of a particular field, or prepared for a specific purpose, often for learning.",
+      "status": "not_learned",
+      "attempts": 0,
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "word": "dog",
+      "definition": "A mammal, Canis familiaris or Canis lupus familiaris, that has been domesticated for thousands of years, of highly variable appearance due to human breeding.",
+      "status": "not_learned",
+      "attempts": 0,
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "word": "desert",
+      "definition": "(usually in the plural) That which is deserved or merited; a just punishment or reward",
+      "status": "learned",
+      "attempts": 1,
+      "correct": 1,
+      "wrong": 0
+    },
+    {
+      "word": "desert",
+      "definition": "the last meal, often sweet",
+      "status": "not_learned",
+      "attempts": 0,
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "word": "farcade",
+      "definition": "hiding",
+      "status": "not_learned",
+      "attempts": 0,
+      "correct": 0,
+      "wrong": 0
+    },
+    {
+      "word": "fill in",
+      "definition": "To fill; to replace material that is absent or has been removed.",
+      "status": "not_learned",
+      "attempts": 0,
+      "correct": 0,
+      "wrong": 0
+    }
+  ]
+}
