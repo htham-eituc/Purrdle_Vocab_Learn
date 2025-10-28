@@ -12,7 +12,7 @@ from infinity_game import InfinityGameManager
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("🐱 Purrdle - Vocabulary Learning 🐱")
+    pygame.display.set_caption(" Purrdle - Vocabulary Learning ")
     clock = pygame.time.Clock()
     
     # Initialize data manager
