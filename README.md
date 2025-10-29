@@ -2,18 +2,19 @@
 
 ## Overview
 
-**Purrdle** is a cat-themed version of the popular word-guessing game **Wordle**, built in **Python** using the **Pygame** library.  
+Purrdle is an innovative vocabulary learning application that combines the engaging gameplay mechanics of word-guessing puzzles with effective spaced repetition learning techniques. Built using Python and the Pygame library, the application transforms vocabulary acquisition from a mundane task into an entertaining and rewarding experience.
 
 This project was created as part of **[Computational Thinking/CSC0014]**.  
 It features a complete, playable game loop, a themed graphical interface, animations, and sound effects.
 
-Video demo: [Youtube](https://youtu.be/jbzPXo6zy-g)
+Video demo: [Youtube](https://youtu.be/_b8yhJW1820)
 
 ---
 ## Requirements
 
 - **Python 3.8+**  
 - **Pygame** (see `requirements.txt`)
+- **Request** (for calling API)
 
 ---
 
@@ -24,7 +25,7 @@ Video demo: [Youtube](https://youtu.be/jbzPXo6zy-g)
 Clone or download the source code from this repository:
 
 ```bash
-git clone https://github.com/htham-eituc/Purrdle
+git clone https://github.com/htham-eituc/Purrdle_Vocab_Learn
 cd Purrdle
 ```
 
@@ -86,26 +87,6 @@ Once assets and dependencies are in place:
 ```bash
 python main.py
 ```
-
----
-
-## How to Play
-
-1. Run the game:
-   ```bash
-   python main.py
-   ```
-2. Type a **5-letter, cat-related word** and press **Enter** to submit your guess.
-3. Tiles flip to show your result:
-
-| Color | Meaning |
-|--------|----------|
-| Green | Correct letter, correct position |
-| Yellow | Correct letter, wrong position |
-| Gray | Letter not in the secret word |
-
-You have **6 tries** to guess the secret “Purr-dle.”  
-After winning or losing, press Restart button to start a new game.
 
 ---
 
